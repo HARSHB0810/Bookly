@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="browse.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav>
+        <h1 class="logo">Bookly</h1>
+        <ul class="pages">
+          <li><a href="/" class="link">Home</a></li>
+          <li><a href="#" class="link">Browse</a></li>
+          <li><a href="../cart/cart.php" class="link">Your Cart</a></li>
+          <li><a href="../about.html" class="link">About Us</a></li>
+        </ul>
+        <i class="fa-solid fa-bars" id="menu" onclick="toggleMenu()"></i>
+      </nav>
+      <ul class="dropdown">
+        <li><a href="/" class="link">Home</a></li>
+        <li><a href="#" class="link">Browse</a></li>
+        <li><a href="../cart/cart.php" class="link">Your Cart</a></li>
+        <li><a href="../about.html" class="link">About Us</a></li>
+      </ul>
+      <div class="browse"></div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      const data = [
+        {
+          name: "Vagabond Manga Vol 1",
+          author: "Takehiko Inoue",
+          price: 13,
+          img: "https://m.media-amazon.com/images/I/71TY7kJBo9L._AC_UF1000,1000_QL80_.jpg",
+        },
+        {
+          name: "Atmoic habbits",
+          author: "James Clear",
+          price: 2,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593492918_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "The Fraud",
+          author: "Zadie Smith",
+          price: 5,
+          img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTXwIvgbahdMkKdJgoMIjtwAs_MN547awpRNutETNu0Z94rQF2w",
+        },
+        {
+          name: "Tom Lake ",
+          author: "Ann Pachett",
+          price: 9,
+          img: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQiXI3WaRZBWykfDKGPBJ-MzjuKGmH3LjPI4vRgVeVwSE2UQI6S",
+        },
+        {
+          name: "The Bee Sting ",
+          author: "Paul Murray",
+          price: 6,
+          img: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtsXzj6EBFs3DRFcnofRtadIiGDBV8q6x5r3jJKkLzU6d1sEMe",
+        },
+        {
+          name: "Biography of X ",
+          author: "Catherine Lacey",
+          price: 7,
+          img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRUbUzmzue17-COlctFK_bhZoHVuY0lrYl0Vb3_ICTEM1hRlqRa",
+        },
+        {
+          name: "Birgnam Wood",
+          author: "Eleanor Catton",
+          price: 9,
+          img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5D2RyaZbpeWOhnJWIr5tEBEWY4IHRgQ6hXdklBaTDgRiEsDym",
+        },
+        {
+          name: "Fourth Wing",
+          author: "Rebecca Yarros",
+          price: 3,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781649374042_p0_v9%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "The Fury",
+          author: "Alex Michaelides",
+          price: 7,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250758989_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "The Heaven & Earth Grocery store",
+          author: "James McBride",
+          price: 4,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593422946_p0_v9%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "First Lie Wins",
+          author: "Ashley Elston",
+          price: 9,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593492918_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "Sanctury Of The Shadow",
+          author: "Aurora Ascher",
+          price: 6,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781649374110_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "It Ends With Us",
+          author: "Colleen Hoover",
+          price: 15,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781501110368_p0_v13%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+        {
+          name: "The Housemaid",
+          author: "Fridea McFadden",
+          price: 9,
+          img: "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781538742570_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        },
+      ];
+
+      var clutter = "";
+
+      data.forEach(({ name, author, price, img }, index) => {
+        clutter += `
+    <div class="card" >
+          <img src=${img} alt="book image" />
+          <div class="book-info">
+            <h6 id="product-name">${name} </h6>
+            <p>${author}</p>
+            <h6 >Price:$<span id="price">${price}<span></h6>
+          </div>
+          <div >
+            <button class="add-cart">Add To Cart</button>
+          </div>
+        </div>
+        `;
+      });
+
+      document.querySelector(".browse").innerHTML = clutter;
+
+      const addToCart = document.querySelectorAll(".add-cart");
+
+      addToCart.forEach((button) => {
+        
+        button.addEventListener('click', function() {
+            var bookInfo = this.parentElement.parentElement.querySelector('.book-info');
+            var bookName = bookInfo.querySelector('#product-name').textContent;
+            var bookPrice = bookInfo.querySelector('#price').textContent
+
+            // Prepare data to be sent
+            var formData = new FormData();
+            formData.append('book_name', bookName);
+            formData.append('book_price', bookPrice);
+
+            // Send the request using fetch
+            fetch('browse.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data); // Show success message
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+          });
+      });
+
+      function toggleMenu() {
+        const dropdownMenu = document.querySelector(".dropdown");
+        console.log(dropdownMenu);
+        if (dropdownMenu.style.display === "flex") {
+          dropdownMenu.style.display = "none";
+        } else {
+          dropdownMenu.style.display = "flex";
+        }
+      }
+    </script>
+  </body>
+</html>
